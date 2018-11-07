@@ -2,6 +2,7 @@ package com.example.naufa.matchSchedule.Api
 
 import com.example.naufa.matchSchedule.Entity.MatchResponse
 import com.example.naufa.matchSchedule.Entity.TeamResponse
+import com.example.naufa.matchSchedule.util.ContextProvider
 import com.example.naufa.matchSchedule.util.TeamView
 import com.google.gson.Gson
 import kotlinx.coroutines.experimental.android.UI
@@ -11,13 +12,14 @@ import org.jetbrains.anko.coroutines.experimental.bg
 class TeamPresenter(
     private val view: TeamView,
     private val apiRepository: ApiRepository,
-    private val gson: Gson
+    private val gson: Gson,
+    private val context: ContextProvider = ContextProvider()
 ) {
 
     fun geDetailTeamList(teamA: String?, teamB: String?) {
         view.isLoading()
 
-        async(UI) {
+        async(context.main) {
             val dataA = bg {
                 gson.fromJson(
                     apiRepository

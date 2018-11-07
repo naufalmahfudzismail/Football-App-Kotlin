@@ -51,7 +51,6 @@ class LastMatchFragment : Fragment(), MatchView, SwipeRefreshLayout.OnRefreshLis
         matchPresenter = MatchPresenter(this, request, gson)
         matchPresenter.getMatchList(false)
 
-
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

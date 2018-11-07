@@ -1,6 +1,7 @@
 package com.example.naufa.matchSchedule.Api
 
 import com.example.naufa.matchSchedule.Entity.MatchResponse
+import com.example.naufa.matchSchedule.util.ContextProvider
 import com.example.naufa.matchSchedule.util.MatchView
 import com.google.gson.Gson
 import kotlinx.coroutines.experimental.android.UI
@@ -10,13 +11,14 @@ import org.jetbrains.anko.coroutines.experimental.bg
 class MatchPresenter(
     private val view: MatchView,
     private val apiRepository: ApiRepository,
-    private val gson: Gson
+    private val gson: Gson,
+    private val context: ContextProvider = ContextProvider()
 ) {
 
     fun getMatchList(isNext: Boolean?) {
         view.isLoading()
         if (!isNext!!) {
-            async(UI) {
+            async(context.main) {
                 val data = bg {
                     gson.fromJson(
                         apiRepository
@@ -30,7 +32,7 @@ class MatchPresenter(
         }
 
         else{
-            async(UI) {
+            async(context.main) {
                 val data = bg {
                     gson.fromJson(
                         apiRepository

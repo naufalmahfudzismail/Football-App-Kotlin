@@ -30,7 +30,7 @@ class MainActivityTest {
     fun testRecyclerViewBehaviour() {
         onView(withId(R.id.match_last_rcy))
             .check(matches(isDisplayed()))
-        Thread.sleep(3000)
+        Thread.sleep(5000)
 
         onView(withId(R.id.match_last_rcy)).perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(10))
         onView(withId(R.id.match_last_rcy)).perform(
@@ -39,11 +39,13 @@ class MainActivityTest {
 
         onView(withId(R.id.add_to_favorite)).perform(click())
         pressBack()
-        Thread.sleep(3000)
+        Thread.sleep(5000)
 
         onView(withId(R.id.viewPager)).perform(swipeLeft())
         onView(withId(R.id.match_next_rcy))
             .check(matches(isDisplayed()))
+        Thread.sleep(5000)
+
         onView(withId(R.id.match_next_rcy)).perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(10))
         onView(withId(R.id.match_next_rcy)).perform(
             RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(10, click()))
@@ -51,10 +53,9 @@ class MainActivityTest {
 
         onView(withId(R.id.add_to_favorite)).perform(click())
         pressBack()
-        Thread.sleep(3000)
+        Thread.sleep(8000)
 
         onView(withId(R.id.action_fav)).perform(click())
-        Thread.sleep(5000)
         pressBack()
 
         /*
