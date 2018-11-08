@@ -1,10 +1,11 @@
-package com.example.naufa.matchSchedule.Api
+package com.example.naufa.matchSchedule.Api.Presenter
 
+import com.example.naufa.matchSchedule.Api.ApiRepository
+import com.example.naufa.matchSchedule.Api.SportAPI
 import com.example.naufa.matchSchedule.Entity.MatchResponse
 import com.example.naufa.matchSchedule.util.ContextProvider
-import com.example.naufa.matchSchedule.util.MatchView
+import com.example.naufa.matchSchedule.MVP.MatchView
 import com.google.gson.Gson
-import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.async
 import org.jetbrains.anko.coroutines.experimental.bg
 

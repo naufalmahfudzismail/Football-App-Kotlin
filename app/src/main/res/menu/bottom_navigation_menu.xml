@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+            android:id="@+id/MatchMenu"
+            android:enabled="true"
+            android:title="@string/match"
+            android:icon="@drawable/ic_action_match"
+            app:showAsAction="ifRoom"/>
+    <item
+            android:id="@+id/TeamMenu"
+            android:enabled="true"
+            android:title="@string/teams"
+            android:icon="@drawable/ic_action_teams"
+            app:showAsAction="ifRoom"/>
+    <item
+            android:id="@+id/FavoriteMenu"
+            android:enabled="true"
+            android:icon="@drawable/ic_action_favorite"
+            android:title="@string/favorites"
+            app:showAsAction="ifRoom"/>
+
+</menu>

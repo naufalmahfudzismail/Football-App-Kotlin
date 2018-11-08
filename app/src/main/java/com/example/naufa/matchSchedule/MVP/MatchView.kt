@@ -1,4 +1,4 @@
-package com.example.naufa.matchSchedule.util
+package com.example.naufa.matchSchedule.MVP
 
 import com.example.naufa.matchSchedule.Entity.Match
 

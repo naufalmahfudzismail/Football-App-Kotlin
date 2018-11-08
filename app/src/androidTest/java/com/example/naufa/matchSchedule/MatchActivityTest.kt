@@ -16,14 +16,14 @@ import org.junit.Rule
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
-class MainActivityTest {
+class MatchActivityTest {
 
     @Rule
-    @JvmField var activityRule = ActivityTestRule(MainActivity::class.java)
+    @JvmField var activityRule = ActivityTestRule(MatchActivity::class.java)
 
     @Before
     fun setUp(){
-        activityRule.activity.pagerAdapter.getItemPosition(0)
+        activityRule.activity.pagerMatchAdapter.getItemPosition(0)
     }
 
     @Test

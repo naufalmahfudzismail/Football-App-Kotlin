@@ -5,10 +5,8 @@ import android.os.Bundle
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import com.example.naufa.matchSchedule.Adapter.FavoriteMatchRecyclerAdapter
-import com.example.naufa.matchSchedule.Adapter.MatchRecyclerAdapter
 import com.example.naufa.matchSchedule.Database.Favorite
 import com.example.naufa.matchSchedule.Database.database
-import com.example.naufa.matchSchedule.Entity.Match
 import kotlinx.android.synthetic.main.activity_favorite.*
 import org.jetbrains.anko.db.classParser
 import org.jetbrains.anko.db.select
@@ -33,7 +31,7 @@ class FavoriteActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListen
 
         adapter = FavoriteMatchRecyclerAdapter(this, favoriteMatch) {
             startActivity(
-                intentFor<DetailActivity>(
+                intentFor<DetailMatchActivity>(
                     "matchId" to it.idEvent, "teamA" to it.idHomeTeam, "teamB" to it.idAwayTeam
                 )
             )

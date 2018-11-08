@@ -1,4 +1,4 @@
-package com.example.naufa.matchSchedule.Fragment
+package com.example.naufa.matchSchedule.Fragment.MatchFragment
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -9,11 +9,11 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.naufa.matchSchedule.Adapter.MatchRecyclerAdapter
 import com.example.naufa.matchSchedule.Api.ApiRepository
-import com.example.naufa.matchSchedule.Api.MatchPresenter
-import com.example.naufa.matchSchedule.DetailActivity
+import com.example.naufa.matchSchedule.Api.Presenter.MatchPresenter
+import com.example.naufa.matchSchedule.DetailMatchActivity
 import com.example.naufa.matchSchedule.Entity.Match
 import com.example.naufa.matchSchedule.R
-import com.example.naufa.matchSchedule.util.MatchView
+import com.example.naufa.matchSchedule.MVP.MatchView
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_next_match.*
 import org.jetbrains.anko.support.v4.intentFor
@@ -33,7 +33,7 @@ class NextMatchFragment : Fragment(), MatchView, SwipeRefreshLayout.OnRefreshLis
         adapter = MatchRecyclerAdapter(this.context!!, matches) {
 
             startActivity(
-                intentFor<DetailActivity>(
+                intentFor<DetailMatchActivity>(
                     "matchId" to it.idEvent, "teamA" to it.idHomeTeam, "teamB" to it.idAwayTeam
                 )
             )

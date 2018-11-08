@@ -23,4 +23,7 @@
     <string name="alert_loading">Tunggu, dan coba lagi!</string>
     <string name="fav">Favorite</string>
     <string name="vs">VS</string>
+    <string name="match">Match</string>
+    <string name="teams">Teams</string>
+    <string name="favorites">Favorites</string>
 </resources>

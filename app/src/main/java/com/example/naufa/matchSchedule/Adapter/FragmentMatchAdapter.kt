@@ -3,10 +3,10 @@ package com.example.naufa.matchSchedule.Adapter
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
-import com.example.naufa.matchSchedule.Fragment.LastMatchFragment
-import com.example.naufa.matchSchedule.Fragment.NextMatchFragment
+import com.example.naufa.matchSchedule.Fragment.MatchFragment.LastMatchFragment
+import com.example.naufa.matchSchedule.Fragment.MatchFragment.NextMatchFragment
 
-class FragmentAdapter(fm: FragmentManager)
+class FragmentMatchAdapter(fm: FragmentManager)
     : FragmentPagerAdapter(fm) {
 
     private val count  = 2

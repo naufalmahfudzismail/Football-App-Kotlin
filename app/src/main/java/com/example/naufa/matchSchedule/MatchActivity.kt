@@ -4,19 +4,17 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import com.example.naufa.matchSchedule.Adapter.FragmentAdapter
-import com.example.naufa.matchSchedule.Fragment.LastMatchFragment
-import com.example.naufa.matchSchedule.Fragment.NextMatchFragment
-import kotlinx.android.synthetic.main.activity_main.*
+import com.example.naufa.matchSchedule.Adapter.FragmentMatchAdapter
+import kotlinx.android.synthetic.main.activity_match.*
 import org.jetbrains.anko.intentFor
 
-class MainActivity : AppCompatActivity() {
+class MatchActivity : AppCompatActivity() {
 
-    lateinit var pagerAdapter: FragmentAdapter
+    lateinit var pagerMatchAdapter: FragmentMatchAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_match)
         setFragment()
     }
 
@@ -40,8 +38,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun setFragment() {
 
-        pagerAdapter = FragmentAdapter(supportFragmentManager)
-        viewPager.adapter = pagerAdapter
+        pagerMatchAdapter = FragmentMatchAdapter(supportFragmentManager)
+        viewPager.adapter = pagerMatchAdapter
         tabLayout.setupWithViewPager(viewPager)
 
     }

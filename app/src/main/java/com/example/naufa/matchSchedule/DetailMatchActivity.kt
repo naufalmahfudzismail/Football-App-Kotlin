@@ -10,8 +10,8 @@ import android.view.MenuItem
 import android.view.View
 import com.bumptech.glide.Glide
 import com.example.naufa.matchSchedule.Api.ApiRepository
-import com.example.naufa.matchSchedule.Api.MatchDetailPresenter
-import com.example.naufa.matchSchedule.Api.TeamPresenter
+import com.example.naufa.matchSchedule.Api.Presenter.MatchDetailPresenter
+import com.example.naufa.matchSchedule.Api.Presenter.TeamPresenter
 import com.example.naufa.matchSchedule.Database.Favorite
 import com.example.naufa.matchSchedule.Database.database
 import com.example.naufa.matchSchedule.Entity.Match
@@ -20,8 +20,8 @@ import com.example.naufa.matchSchedule.R.drawable.ic_add_favorite
 import com.example.naufa.matchSchedule.R.drawable.ic_already_favorite
 import com.example.naufa.matchSchedule.R.id.add_to_favorite
 import com.example.naufa.matchSchedule.R.menu.menu_detail
-import com.example.naufa.matchSchedule.util.MatchView
-import com.example.naufa.matchSchedule.util.TeamView
+import com.example.naufa.matchSchedule.MVP.MatchView
+import com.example.naufa.matchSchedule.MVP.TeamView
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_detail.*
 import org.jetbrains.anko.db.classParser
@@ -30,7 +30,8 @@ import org.jetbrains.anko.db.insert
 import org.jetbrains.anko.db.select
 import org.jetbrains.anko.toast
 
-class DetailActivity : AppCompatActivity(), MatchView, TeamView {
+class DetailMatchActivity : AppCompatActivity(), MatchView,
+    TeamView {
 
     private lateinit var idTeamA: String
     private lateinit var idTeamB: String
