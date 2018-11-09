@@ -1,10 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<ScrollView
+        android:background="@color/AbuTua"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context="com.example.naufa.matchSchedule.DetailPlayerActivity"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context="com.example.naufa.matchSchedule.DetailPlayerActivity">
+        android:layout_height="match_parent">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        <ProgressBar
+                android:id="@+id/progress_bar_player"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        <ImageView
+                android:id="@+id/player_img_detail"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:contentDescription="@string/deskripsifotoplayer"/>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:orientation="horizontal"
+                android:baselineAligned="false">
+
+            <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:text="@string/berat_badan"
+                        android:textColor="#E0F7FA"
+                        android:textSize="25sp"/>
+
+                <TextView
+                        android:id="@+id/player_weight_detail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#E0F7FA"
+                        android:textSize="20sp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:text="@string/tinggi_badan"
+                        android:textColor="#E0F7FA"
+                        android:textSize="25sp"/>
+
+                <TextView
+                        android:id="@+id/player_height_detail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#E0F7FA"
+                        android:textSize="20sp"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+                android:id="@+id/player_role_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="8dp"
+                android:textColor="#E0F7FA"
+                android:textSize="18sp"/>
+
+        <TextView
+                android:id="@+id/player_forward_detail"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
+                android:gravity="center"
+                android:textColor="#E0F7FA"
+                android:textSize="18sp"/>
+    </LinearLayout>
+</ScrollView>

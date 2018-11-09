@@ -1,10 +1,10 @@
 package com.example.naufa.matchSchedule.Api
 
+import com.example.naufa.matchSchedule.Api.Presenter.TeamFromMatchPresenter
 import com.example.naufa.matchSchedule.Entity.MatchResponse
 import com.example.naufa.matchSchedule.Entity.Team
 import com.example.naufa.matchSchedule.Entity.TeamResponse
-import com.example.naufa.matchSchedule.util.MatchView
-import com.example.naufa.matchSchedule.util.TeamView
+import com.example.naufa.matchSchedule.MVP.TeamView
 import com.example.naufa.matchSchedule.util.TestContextProvider
 import com.google.gson.Gson
 import org.junit.Test
@@ -15,7 +15,7 @@ import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.MockitoAnnotations
 
-class TeamPresenterTesting {
+class TeamFromMatchPresenterTesting {
 
     @Mock
     private
@@ -29,12 +29,12 @@ class TeamPresenterTesting {
     private
     lateinit var apiRepository: ApiRepository
 
-    private lateinit var presenter: TeamPresenter
+    private lateinit var presenter: TeamFromMatchPresenter
 
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
-        presenter = TeamPresenter(view, apiRepository, gson, TestContextProvider())
+        presenter = TeamFromMatchPresenter(view, apiRepository, gson, TestContextProvider())
     }
 
 

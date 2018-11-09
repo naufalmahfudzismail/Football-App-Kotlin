@@ -1,12 +1,13 @@
 package com.example.naufa.matchSchedule.Adapter
 
+import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
-import com.example.naufa.matchSchedule.Fragment.MatchFragment.LastMatchFragment
-import com.example.naufa.matchSchedule.Fragment.MatchFragment.NextMatchFragment
+import com.example.naufa.matchSchedule.Fragment.DetailTeamFragment.OverviewFragment
+import com.example.naufa.matchSchedule.Fragment.DetailTeamFragment.PlayerFragment
 
-class FragmentDetailTeamAdapter(fm: FragmentManager)
+class FragmentDetailTeamAdapter(private val idTeam: String, fm: FragmentManager)
     : FragmentPagerAdapter(fm) {
 
     private val count  = 2
@@ -14,21 +15,45 @@ class FragmentDetailTeamAdapter(fm: FragmentManager)
     override fun getItem(position: Int): Fragment? {
         var fragment: Fragment? = null
         when (position) {
-            0 -> fragment = LastMatchFragment()
-            1 -> fragment = NextMatchFragment()
+            0 -> fragment = newInstanceOverview(idTeam)
+            1 -> fragment = newInstancePlayer(idTeam)
         }
         return fragment
     }
 
     override fun getPageTitle(position: Int): CharSequence? {
         return if(position == 0){
-            "Last Match"
+            "Overview"
         } else{
-            "Next Match"
+            "Players"
         }
     }
     override fun getCount(): Int {
        return count
+    }
+
+    companion object {
+
+        const val KEY_TEAM = "KEY_TEAM"
+        const val KEY_TEAM_2 = "KEY_TEAM_2"
+
+        fun newInstanceOverview(id: String): OverviewFragment {
+            val bindData = Bundle()
+            bindData.putString(KEY_TEAM, id)
+
+            val overviewFragment = OverviewFragment()
+           overviewFragment.arguments = bindData
+            return overviewFragment
+        }
+
+        fun newInstancePlayer(id: String): PlayerFragment {
+            val bindData = Bundle()
+            bindData.putString(KEY_TEAM_2, id)
+
+            val playerFragment = PlayerFragment()
+            playerFragment.arguments = bindData
+            return playerFragment
+        }
     }
 
 }

@@ -6,16 +6,15 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.naufa.matchSchedule.Database.Favorite
-import com.example.naufa.matchSchedule.Entity.Match
+import com.example.naufa.matchSchedule.Database.FavoriteMatch
 import com.example.naufa.matchSchedule.R
-import kotlinx.android.synthetic.main.card_schedule.view.*
+import kotlinx.android.synthetic.main.card_match.view.*
 
-class FavoriteMatchRecyclerAdapter(private val context : Context, private val matches : List<Favorite>, private val listener : (Favorite) -> Unit ) :
+class FavoriteMatchRecyclerAdapter(private val context : Context, private val matches : List<FavoriteMatch>, private val listener : (FavoriteMatch) -> Unit ) :
     RecyclerView.Adapter<FavoriteMatchRecyclerAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(context).inflate(R.layout.card_schedule, parent, false))
+        return ViewHolder(LayoutInflater.from(context).inflate(R.layout.card_match, parent, false))
     }
 
     override fun getItemCount(): Int {
@@ -29,7 +28,7 @@ class FavoriteMatchRecyclerAdapter(private val context : Context, private val ma
 
 
         @SuppressLint("SetTextI18n")
-        fun bindMatch(match : Favorite, listener : (Favorite) -> Unit, context: Context){
+        fun bindMatch(match : FavoriteMatch, listener : (FavoriteMatch) -> Unit, context: Context){
 
             if(match.intHomeScore == null){
                 match.intHomeScore = ""

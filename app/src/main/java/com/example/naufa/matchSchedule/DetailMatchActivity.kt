@@ -11,8 +11,8 @@ import android.view.View
 import com.bumptech.glide.Glide
 import com.example.naufa.matchSchedule.Api.ApiRepository
 import com.example.naufa.matchSchedule.Api.Presenter.MatchDetailPresenter
-import com.example.naufa.matchSchedule.Api.Presenter.TeamPresenter
-import com.example.naufa.matchSchedule.Database.Favorite
+import com.example.naufa.matchSchedule.Api.Presenter.TeamFromMatchPresenter
+import com.example.naufa.matchSchedule.Database.FavoriteMatch
 import com.example.naufa.matchSchedule.Database.database
 import com.example.naufa.matchSchedule.Entity.Match
 import com.example.naufa.matchSchedule.Entity.Team
@@ -41,7 +41,7 @@ class DetailMatchActivity : AppCompatActivity(), MatchView,
     private lateinit var teamA: Team
     private lateinit var teamB: Team
 
-    private lateinit var teamPresenter: TeamPresenter
+    private lateinit var teamPresenter: TeamFromMatchPresenter
     private lateinit var matchDetailPresenter: MatchDetailPresenter
     private var isFavorite: Boolean = false
     private var menuItem: Menu? = null
@@ -60,7 +60,7 @@ class DetailMatchActivity : AppCompatActivity(), MatchView,
         val request = ApiRepository()
         val gson = Gson()
 
-        teamPresenter = TeamPresenter(this, request, gson)
+        teamPresenter = TeamFromMatchPresenter(this, request, gson)
         matchDetailPresenter = MatchDetailPresenter(this, request, gson)
 
         teamPresenter.geDetailTeamList(idTeamA, idTeamB)
@@ -178,32 +178,32 @@ class DetailMatchActivity : AppCompatActivity(), MatchView,
         try {
             database.use {
                 insert(
-                    Favorite.TABLE_FAVORITE,
-                    Favorite.ID_EVENT to match.idEvent,
-                    Favorite.STR_HOME_TEAM to match.strHomeTeam,
-                    Favorite.STR_AWAY_TEAM to match.strAwayTeam,
-                    Favorite.INT_HOME_SCORE to match.intHomeScore,
-                    Favorite.INT_AWAY_SCORE to match.intAwayScore,
-                    Favorite.DATE_EVENT to match.dateEvent,
-                    Favorite.STR_HOME_LINEUP_GOALKEEPER to match.strHomeLineupGoalkeeper,
-                    Favorite.STR_AWAY_LINEUP_GOALKEEPER to match.strAwayLineupGoalkeeper,
-                    Favorite.STR_HOME_GOAL_DETAILS to match.strHomeGoalDetails,
-                    Favorite.STR_AWAY_GOAL_DETAILS to match.strAwayGoalDetails,
-                    Favorite.INT_HOME_SHOTS to match.intHomeShots,
-                    Favorite.INT_AWAY_SHOTS to match.intAwayShots,
-                    Favorite.STR_HOME_LINEUP_DEFENSE to match.strHomeLineupDefense,
-                    Favorite.AWAY_DEFENSE to match.awayDefense,
-                    Favorite.STR_AWAY_LINEUP_DEFENSE to match.strAwayLineupDefense,
-                    Favorite.STR_AWAY_LINEUP_MIDFIELD to match.strAwayLineupMidfield,
-                    Favorite.STR_HOME_LINEUP_FORWARD to match.strHomeLineupForward,
-                    Favorite.STR_AWAY_LINEUP_FORWARD to match.strAwayLineupForward,
-                    Favorite.STR_HOME_LINEUP_SUBSTITUTES to match.strHomeLineupSubstitutes,
-                    Favorite.STR_AWAY_LINEUP_SUBSTITUTES to match.strAwayLineupSubstitutes,
-                    Favorite.STR_HOME_FORMATION to match.strHomeFormation,
-                    Favorite.STR_AWAY_FORMATION to match.strAwayFormation,
-                    Favorite.STR_TEAM_BADGE to match.strTeamBadge,
-                    Favorite.ID_HOME_TEAM to match.idHomeTeam,
-                    Favorite.ID_AWAY_TEAM to match.idAwayTeam
+                    FavoriteMatch.TABLE_MATCH_FAVORITE,
+                    FavoriteMatch.ID_EVENT to match.idEvent,
+                    FavoriteMatch.STR_HOME_TEAM to match.strHomeTeam,
+                    FavoriteMatch.STR_AWAY_TEAM to match.strAwayTeam,
+                    FavoriteMatch.INT_HOME_SCORE to match.intHomeScore,
+                    FavoriteMatch.INT_AWAY_SCORE to match.intAwayScore,
+                    FavoriteMatch.DATE_EVENT to match.dateEvent,
+                    FavoriteMatch.STR_HOME_LINEUP_GOALKEEPER to match.strHomeLineupGoalkeeper,
+                    FavoriteMatch.STR_AWAY_LINEUP_GOALKEEPER to match.strAwayLineupGoalkeeper,
+                    FavoriteMatch.STR_HOME_GOAL_DETAILS to match.strHomeGoalDetails,
+                    FavoriteMatch.STR_AWAY_GOAL_DETAILS to match.strAwayGoalDetails,
+                    FavoriteMatch.INT_HOME_SHOTS to match.intHomeShots,
+                    FavoriteMatch.INT_AWAY_SHOTS to match.intAwayShots,
+                    FavoriteMatch.STR_HOME_LINEUP_DEFENSE to match.strHomeLineupDefense,
+                    FavoriteMatch.AWAY_DEFENSE to match.awayDefense,
+                    FavoriteMatch.STR_AWAY_LINEUP_DEFENSE to match.strAwayLineupDefense,
+                    FavoriteMatch.STR_AWAY_LINEUP_MIDFIELD to match.strAwayLineupMidfield,
+                    FavoriteMatch.STR_HOME_LINEUP_FORWARD to match.strHomeLineupForward,
+                    FavoriteMatch.STR_AWAY_LINEUP_FORWARD to match.strAwayLineupForward,
+                    FavoriteMatch.STR_HOME_LINEUP_SUBSTITUTES to match.strHomeLineupSubstitutes,
+                    FavoriteMatch.STR_AWAY_LINEUP_SUBSTITUTES to match.strAwayLineupSubstitutes,
+                    FavoriteMatch.STR_HOME_FORMATION to match.strHomeFormation,
+                    FavoriteMatch.STR_AWAY_FORMATION to match.strAwayFormation,
+                    FavoriteMatch.STR_TEAM_BADGE to match.strTeamBadge,
+                    FavoriteMatch.ID_HOME_TEAM to match.idHomeTeam,
+                    FavoriteMatch.ID_AWAY_TEAM to match.idAwayTeam
                 )
             }
             Snackbar.make(
@@ -221,7 +221,7 @@ class DetailMatchActivity : AppCompatActivity(), MatchView,
     private fun removeFromFavorite() {
         try {
             database.use {
-                delete(Favorite.TABLE_FAVORITE, "(ID_EVENT = {idEvent})", "idEvent" to idMatch)
+                delete(FavoriteMatch.TABLE_MATCH_FAVORITE, "(ID_EVENT = {idEvent})", "idEvent" to idMatch)
             }
             Snackbar.make(
                 findViewById(R.id.ll_detail),
@@ -251,9 +251,9 @@ class DetailMatchActivity : AppCompatActivity(), MatchView,
 
     private fun favoriteState() {
         database.use {
-            val result = select(Favorite.TABLE_FAVORITE)
+            val result = select(FavoriteMatch.TABLE_MATCH_FAVORITE)
                 .whereArgs("(ID_EVENT = {idEvent})", "idEvent" to idMatch)
-            val favorite = result.parseList(classParser<Favorite>())
+            val favorite = result.parseList(classParser<FavoriteMatch>())
             if (!favorite.isEmpty()) isFavorite = true
         }
     }

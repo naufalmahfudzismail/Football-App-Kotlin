@@ -1,6 +1,6 @@
 package com.example.naufa.matchSchedule.Database
 
-data class Favorite(
+data class FavoriteMatch(
     val id: Long? = null,
     val idEvent: String? = null,
     val strHomeTeam: String? = null,
@@ -30,7 +30,7 @@ data class Favorite(
 ) {
 
     companion object {
-        const val TABLE_FAVORITE: String = "TABLE_FAVORITE"
+        const val TABLE_MATCH_FAVORITE: String = "TABLE_FAVORITE"
         const val ID: String = "ID_"
         const val ID_EVENT: String = "ID_EVENT"
         const val STR_HOME_TEAM: String = "STR_HOME_TEAM"

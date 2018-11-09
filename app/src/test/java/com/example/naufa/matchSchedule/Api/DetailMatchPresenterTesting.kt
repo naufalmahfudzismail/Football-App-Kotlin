@@ -1,14 +1,13 @@
 package com.example.naufa.matchSchedule.Api
 
+import com.example.naufa.matchSchedule.Api.Presenter.MatchDetailPresenter
 import com.example.naufa.matchSchedule.Entity.Match
 import com.example.naufa.matchSchedule.Entity.MatchResponse
-import com.example.naufa.matchSchedule.util.MatchView
-import com.example.naufa.matchSchedule.util.TeamView
+import com.example.naufa.matchSchedule.MVP.MatchView
 import com.example.naufa.matchSchedule.util.TestContextProvider
 import com.google.gson.Gson
 import org.junit.Test
 
-import org.junit.Assert.*
 import org.junit.Before
 import org.mockito.Mock
 import org.mockito.Mockito

@@ -71,7 +71,7 @@ class MatchActivityTest {
             9) Open up it detail activity, and click favorite button
             10) Back to Main Activity
             11) Click favorite button
-            12) go to Favorite activity
+            12) go to FavoriteMatch activity
             13) back to Main Activity
          */
     }

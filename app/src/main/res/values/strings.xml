@@ -24,6 +24,23 @@
     <string name="fav">Favorite</string>
     <string name="vs">VS</string>
     <string name="match">Match</string>
-    <string name="teams">Teams</string>
+    <string name="teams_title">Teams</string>
     <string name="favorites">Favorites</string>
+    <string name="nama_team">Nama Team</string>
+    <string name="team_image">Team_Image</string>
+    <string name="nama_player">Nama PLayer</string>
+    <string name="role_player">Role player</string>
+    <string name="team_detail">Team Detail</string>
+    <string name="remove_fav">Removed from favorite</string>
+    <string name="cant_remove">Can\'t remove from favorite, coz</string>
+    <string name="title_size">20sp</string>
+    <string name="example">nama team</string>
+    <string name="deskripsifotoplayer">deskripsiFotoPlayer</string>
+    <string name="berat">berat</string>
+    <string name="berat_badan">Berat Badan</string>
+    <string name="tinggi_badan">Tinggi Badan</string>
+    <string name="title_player_activity">Player Detail</string>
+    <string name="favs">Favorites</string>
+    <string name="mt_sc">Match Schedule</string>
+    <string name="teams">Teams</string>
 </resources>

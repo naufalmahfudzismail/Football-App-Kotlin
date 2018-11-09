@@ -8,13 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.naufa.matchSchedule.Entity.Match
 import com.example.naufa.matchSchedule.R
-import kotlinx.android.synthetic.main.card_schedule.view.*
+import kotlinx.android.synthetic.main.card_match.view.*
 
 class MatchRecyclerAdapter(private val context : Context, private val matches : List<Match>, private val listener : (Match) -> Unit ) :
     RecyclerView.Adapter<MatchRecyclerAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(context).inflate(R.layout.card_schedule, parent, false))
+        return ViewHolder(LayoutInflater.from(context).inflate(R.layout.card_match, parent, false))
     }
 
     override fun getItemCount(): Int {

@@ -1,8 +1,9 @@
 package com.example.naufa.matchSchedule.Api
 
+import com.example.naufa.matchSchedule.Api.Presenter.MatchPresenter
 import com.example.naufa.matchSchedule.Entity.Match
 import com.example.naufa.matchSchedule.Entity.MatchResponse
-import com.example.naufa.matchSchedule.util.MatchView
+import com.example.naufa.matchSchedule.MVP.MatchView
 import com.example.naufa.matchSchedule.util.TestContextProvider
 import com.google.gson.Gson
 import org.junit.Test

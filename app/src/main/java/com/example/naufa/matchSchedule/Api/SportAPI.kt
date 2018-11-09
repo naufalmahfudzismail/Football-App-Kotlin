@@ -19,24 +19,24 @@ object SportAPI {
         return "https://www.thesportsdb.com/api/v1/json/1/lookupteam.php?id=$teamId"
     }
 
-    fun getDetailTeam(idTeam: String?): String {
-        return "https://www.thesportsdb.com/api/v1/json/4012986/lookupteam.php?id=$idTeam"
+    fun getTeams():String{
+        return "https://www.thesportsdb.com/api/v1/json/1/search_all_teams.php?s=Soccer&c=Spain"
     }
 
     fun getPlayerTeam(teamId: String?): String {
-        return "https://www.thesportsdb.com/api/v1/json/4012986/lookup_all_players.php?id=$teamId"
+        return "https://www.thesportsdb.com/api/v1/json/1/lookup_all_players.php?id=$teamId"
     }
 
     fun getPlayerDetail(playerId: String?): String {
-        return "https://www.thesportsdb.com/api/v1/json/4012986/lookupplayer.php?id=$playerId"
+        return "https://www.thesportsdb.com/api/v1/json/1/lookupplayer.php?id=$playerId"
     }
 
-    fun getEventSearch(searchInput: String?): String {
-        return "https://www.thesportsdb.com/api/v1/json/4012986/searchevents.php?e=$searchInput"
+    fun getMatchSearch(searchInput: String?): String {
+        return "https://www.thesportsdb.com/api/v1/json/1/searchevents.php?e=$searchInput"
     }
 
     fun getTeamSearch(searchInput: String?): String {
-        return "https://www.thesportsdb.com/api/v1/json/4012986/searchteams.php?t=$searchInput"
+        return "https://www.thesportsdb.com/api/v1/json/1/searchteams.php?t=$searchInput"
     }
 
 

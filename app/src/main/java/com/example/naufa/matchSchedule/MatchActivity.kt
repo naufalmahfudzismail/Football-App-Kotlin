@@ -2,9 +2,8 @@ package com.example.naufa.matchSchedule
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import com.example.naufa.matchSchedule.Adapter.FragmentMatchAdapter
+import com.example.naufa.matchSchedule.R.id.*
 import kotlinx.android.synthetic.main.activity_match.*
 import org.jetbrains.anko.intentFor
 
@@ -15,26 +14,31 @@ class MatchActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_match)
+        supportActionBar?.title = getString(R.string.mt_sc)
         setFragment()
-    }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        val inflater = menuInflater
-        inflater.inflate(R.menu.menu_main, menu)
-        return super.onCreateOptionsMenu(menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
-        when(item.itemId){
-            R.id.action_fav ->{
-                startActivity(intentFor<FavoriteActivity>())
-                return true
+        bottom_navigation.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                MatchMenu -> {
+                    startActivity(
+                        intentFor<MatchActivity>()
+                    )
+                }
+                TeamMenu -> {
+                    startActivity(
+                        intentFor<TeamActivity>()
+                    )
+                }
+                FavoriteMenu -> {
+                    startActivity(
+                        intentFor<FavoriteActivity>()
+                    )
+                }
             }
+            true
         }
-
-        return super.onOptionsItemSelected(item)
     }
+
 
     private fun setFragment() {
 
