@@ -19,7 +19,7 @@ import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_team_overview.*
 
 
-class OverviewFragment : Fragment(), TeamListView, SwipeRefreshLayout.OnRefreshListener {
+class OverviewFragment : Fragment(), TeamListView {
 
     private lateinit var idTeam: String
     private lateinit var teamPresenter: TeamPresenter
@@ -27,7 +27,6 @@ class OverviewFragment : Fragment(), TeamListView, SwipeRefreshLayout.OnRefreshL
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        swipe_team_overview.setOnRefreshListener(this)
 
         val bindData = arguments
         idTeam = bindData?.getString(KEY_TEAM) ?: "idTeam"
@@ -54,16 +53,9 @@ class OverviewFragment : Fragment(), TeamListView, SwipeRefreshLayout.OnRefreshL
 
     override fun showTeam(data: List<Team>) {
 
-        swipe_team_overview.isRefreshing = false
-        team_name_detail.text = data[0].teamName
-        team_formed_detail.text = data[0].teamFormedYear
-        team_stadium_detail.text = data[0].teamStadium
         team_desc_detail.text = data[0].teamDescription
-        data[0].strTeamBadge.let{ Glide.with(context).load(it).into(team_image_detail)}
+
     }
 
-    override fun onRefresh() {
-        teamPresenter.geDetailTeam(idTeam)
-    }
 
 }

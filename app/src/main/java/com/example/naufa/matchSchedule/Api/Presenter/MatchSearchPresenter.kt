@@ -16,16 +16,16 @@ class MatchSearchPresenter(
     private val context: ContextProvider = ContextProvider()
 ) {
 
-    fun getMatch(title: String) {
+    fun getMatch(title: String?) {
         view.isLoading()
 
-        if( title.isEmpty()) {
+        if(title.isNullOrEmpty()) {
 
             async(context.main) {
                 val data = bg {
                     gson.fromJson(
                         apiRepository
-                            .doRequest(SportAPI.getLastMatch()),
+                            .doRequest(SportAPI.getLastMatch("4328")),
                         MatchResponse::class.java
                     )
                 }
@@ -42,7 +42,7 @@ class MatchSearchPresenter(
                         MatchResponse::class.java
                     )
                 }
-                view.showMatch(data.await().matches)
+                view.showMatch(data.await().match)
                 view.stopLoading()
             }
         }

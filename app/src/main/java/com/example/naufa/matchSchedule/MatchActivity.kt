@@ -37,6 +37,8 @@ class MatchActivity : AppCompatActivity() {
             }
             true
         }
+
+        bottom_navigation.menu.findItem(R.id.MatchMenu).isChecked = true
     }
 
 

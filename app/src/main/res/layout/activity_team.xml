@@ -7,14 +7,17 @@
         android:layout_height="match_parent"
         tools:context="com.example.naufa.matchSchedule.TeamActivity">
     <com.mancj.materialsearchbar.MaterialSearchBar
+            app:mt_placeholder="@string/search_team_hint"
+            app:mt_hint="@string/search_team_hint"
+            app:mt_searchBarColor="@color/biruPastel"
             android:padding="10dp"
-            app:mt_searchBarColor="@color/AbuMuda"
             android:id="@+id/search_team"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
     </com.mancj.materialsearchbar.MaterialSearchBar>
 
     <android.support.v4.widget.SwipeRefreshLayout
+            android:layout_margin="10dp"
             android:layout_above="@+id/bottom_layout"
             android:layout_below="@+id/search_team"
             android:id="@+id/swipe_search_team"
@@ -25,7 +28,6 @@
                 android:id="@+id/rcy_team"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
         </android.support.v7.widget.RecyclerView>
     </android.support.v4.widget.SwipeRefreshLayout>
 
@@ -50,11 +52,5 @@
                 app:menu="@menu/bottom_navigation_menu" />
     </LinearLayout>
 
-    <ProgressBar
-            android:visibility="gone"
-            android:layout_centerInParent="true"
-            android:id="@+id/progress_circular"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
 
 </RelativeLayout>

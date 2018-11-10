@@ -55,7 +55,8 @@ class MatchActivityTest {
         pressBack()
         Thread.sleep(8000)
 
-        onView(withId(R.id.action_fav)).perform(click())
+        onView(withId(R.id.FavoriteMenu)).perform(click())
+        Thread.sleep(8000)
         pressBack()
 
         /*

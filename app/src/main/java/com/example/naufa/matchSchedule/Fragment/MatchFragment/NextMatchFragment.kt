@@ -7,6 +7,8 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import com.example.naufa.matchSchedule.Adapter.MatchRecyclerAdapter
 import com.example.naufa.matchSchedule.Api.ApiRepository
 import com.example.naufa.matchSchedule.Api.Presenter.MatchPresenter
@@ -16,6 +18,7 @@ import com.example.naufa.matchSchedule.R
 import com.example.naufa.matchSchedule.MVP.MatchView
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_next_match.*
+import org.jetbrains.anko.support.v4.ctx
 import org.jetbrains.anko.support.v4.intentFor
 import org.jetbrains.anko.support.v4.toast
 
@@ -25,6 +28,7 @@ class NextMatchFragment : Fragment(), MatchView, SwipeRefreshLayout.OnRefreshLis
     private lateinit var matchPresenter: MatchPresenter
     private lateinit var adapter: MatchRecyclerAdapter
     private var matches: MutableList<Match> = mutableListOf()
+    private var leagues : String = ""
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -46,7 +50,84 @@ class NextMatchFragment : Fragment(), MatchView, SwipeRefreshLayout.OnRefreshLis
         val gson = Gson()
 
         matchPresenter = MatchPresenter(this, request, gson)
-        matchPresenter.getMatchList(true)
+        matchPresenter.getMatchList(true, getString(R.string.match_english_pemier_league))
+
+        val spinnerItemsLeague = resources.getStringArray(R.array.league)
+        val spinnerAdapterLeague = ArrayAdapter(ctx, android.support.design.R.layout.support_simple_spinner_dropdown_item, spinnerItemsLeague)
+        spinner_next.adapter = spinnerAdapterLeague
+
+        spinner_next.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+
+                if ( spinner_next.selectedItem == getString(R.string.english_pemier_league)) {
+
+                    leagues =  getString(R.string.match_english_pemier_league)
+
+                    matchPresenter.getMatchList(true ,
+                        getString(R.string.match_english_pemier_league))
+
+                    swipe_layout.isRefreshing = true
+                    matchPresenter.getMatchList(true ,
+                        getString(R.string.match_english_pemier_league))
+
+                }
+                if (spinner_next.selectedItem == getString(R.string.english_league_championship)) {
+
+                    leagues = getString(R.string.match_english_league_championship)
+
+                    matchPresenter.getMatchList(true,
+                        getString(R.string.match_english_league_championship))
+
+                    swipe_layout.isRefreshing = true
+                    matchPresenter.getMatchList(true,
+                        getString(R.string.match_english_league_championship))
+                }
+                if (spinner_next.selectedItem == getString(R.string.german_bundes_liga)) {
+
+                    leagues = getString(R.string.match_german_bundes_liga)
+
+                    matchPresenter.getMatchList(true,
+                        getString(R.string.match_german_bundes_liga))
+
+                    swipe_layout.isRefreshing = true
+                    matchPresenter.getMatchList(true,
+                        getString(R.string.match_german_bundes_liga))
+
+                }
+                if (spinner_next.selectedItem == getString(R.string.italian_serie_A)) {
+
+                    leagues =  getString(R.string.match_italian_serie_A)
+
+                    matchPresenter.getMatchList(true,
+                        getString(R.string.match_italian_serie_A))
+
+                    swipe_layout.isRefreshing = true
+                    matchPresenter.getMatchList(true,
+                        getString(R.string.match_italian_serie_A))
+
+                }
+                if (spinner_next.selectedItem == getString(R.string.french_ligue_1)) {
+
+                    leagues = getString(R.string.match_french_ligue_1)
+
+                    matchPresenter.getMatchList(true,
+                        getString(R.string.match_french_ligue_1))
+
+                    swipe_layout.isRefreshing = true
+                    matchPresenter.getMatchList(true,
+                        getString(R.string.match_french_ligue_1))
+
+                }
+
+            }
+
+        }
+
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -54,15 +135,15 @@ class NextMatchFragment : Fragment(), MatchView, SwipeRefreshLayout.OnRefreshLis
     }
 
     override fun onRefresh() {
-        matchPresenter.getMatchList(true)
+        matchPresenter.getMatchList(true, leagues)
     }
 
     override fun isLoading() {
-        progress_circular.visibility = View.VISIBLE
+        swipe_layout.isRefreshing = true
     }
 
     override fun stopLoading() {
-        progress_circular.visibility = View.GONE
+        swipe_layout.isRefreshing = false
     }
 
     override fun showMatch(data: List<Match>?) {

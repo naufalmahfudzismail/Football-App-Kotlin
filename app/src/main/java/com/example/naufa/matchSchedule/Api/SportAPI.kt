@@ -3,12 +3,16 @@ package com.example.naufa.matchSchedule.Api
 
 object SportAPI {
 
-    fun getLastMatch():String{
-        return "https://www.thesportsdb.com/api/v1/json/1/eventspastleague.php?id=4328"
+    fun getLastMatch(idLeague : String):String{
+        return "https://www.thesportsdb.com/api/v1/json/1/eventspastleague.php?id=$idLeague"
     }
 
-    fun getNextMatch():String{
-        return "https://www.thesportsdb.com/api/v1/json/1/eventsnextleague.php?id=4328"
+    fun getNextMatch(idLeague : String):String{
+        return "https://www.thesportsdb.com/api/v1/json/1/eventsnextleague.php?id=$idLeague"
+    }
+
+    fun getMatchSearch(searchInput: String?): String {
+        return "https://www.thesportsdb.com/api/v1/json/1/searchevents.php?e=$searchInput"
     }
 
     fun getMatch(matchId : String?):String{
@@ -31,14 +35,9 @@ object SportAPI {
         return "https://www.thesportsdb.com/api/v1/json/1/lookupplayer.php?id=$playerId"
     }
 
-    fun getMatchSearch(searchInput: String?): String {
-        return "https://www.thesportsdb.com/api/v1/json/1/searchevents.php?e=$searchInput"
-    }
 
     fun getTeamSearch(searchInput: String?): String {
         return "https://www.thesportsdb.com/api/v1/json/1/searchteams.php?t=$searchInput"
     }
-
-
 
 }

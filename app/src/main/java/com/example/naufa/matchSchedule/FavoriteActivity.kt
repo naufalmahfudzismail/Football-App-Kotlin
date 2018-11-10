@@ -40,6 +40,8 @@ class FavoriteActivity : AppCompatActivity(){
             }
             true
         }
+        fav_bottom_navigation.menu.findItem(R.id.FavoriteMenu).isChecked = true
+
     }
 
     private fun setFragment() {

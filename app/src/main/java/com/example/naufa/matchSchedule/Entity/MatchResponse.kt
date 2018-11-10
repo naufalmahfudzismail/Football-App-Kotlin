@@ -7,7 +7,7 @@ data  class MatchResponse(
     val matches: List<Match>? = null,
 
    @SerializedName("event")
-    val event: List<Match>? = null,
+    val match: List<Match>? = null,
 
    @SerializedName("teams")
     val teams: List<Team>? = null

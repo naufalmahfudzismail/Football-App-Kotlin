@@ -12,6 +12,7 @@ import com.example.naufa.matchSchedule.Entity.Team
 import com.example.naufa.matchSchedule.MVP.TeamListView
 import com.google.gson.Gson
 import com.mancj.materialsearchbar.MaterialSearchBar
+import kotlinx.android.synthetic.main.activity_favorite.*
 import kotlinx.android.synthetic.main.activity_team.*
 import org.jetbrains.anko.intentFor
 
@@ -29,6 +30,9 @@ class TeamActivity : AppCompatActivity(), TeamListView, MaterialSearchBar.OnSear
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_team)
         supportActionBar?.title = getString(R.string.teams_title)
+
+        swipe_search_team.setOnRefreshListener(this)
+        search_team.setOnSearchActionListener(this)
 
         adapter = TeamRecyclerAdapter(this, teams){
 
@@ -60,6 +64,7 @@ class TeamActivity : AppCompatActivity(), TeamListView, MaterialSearchBar.OnSear
             }
             true
         }
+        team_bottom_navigation.menu.findItem(R.id.TeamMenu).isChecked = true
 
 
         rcy_team.layoutManager = LinearLayoutManager(this)
@@ -81,11 +86,11 @@ class TeamActivity : AppCompatActivity(), TeamListView, MaterialSearchBar.OnSear
 
 
     override fun isLoading() {
-        progress_circular.visibility = View.VISIBLE
+        swipe_search_team.isRefreshing = true
     }
 
     override fun stopLoading() {
-        progress_circular.visibility = View.INVISIBLE
+        swipe_search_team.isRefreshing = false
     }
 
     override fun showTeam(data: List<Team>) {

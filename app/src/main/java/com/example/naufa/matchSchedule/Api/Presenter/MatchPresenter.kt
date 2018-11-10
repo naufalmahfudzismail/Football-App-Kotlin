@@ -16,14 +16,14 @@ class MatchPresenter(
     private val context: ContextProvider = ContextProvider()
 ) {
 
-    fun getMatchList(isNext: Boolean?) {
+    fun getMatchList(isNext: Boolean?, league : String) {
         view.isLoading()
         if (!isNext!!) {
             async(context.main) {
                 val data = bg {
                     gson.fromJson(
                         apiRepository
-                            .doRequest(SportAPI.getLastMatch()),
+                            .doRequest(SportAPI.getLastMatch(league)),
                         MatchResponse::class.java
                     )
                 }
@@ -37,7 +37,7 @@ class MatchPresenter(
                 val data = bg {
                     gson.fromJson(
                         apiRepository
-                            .doRequest(SportAPI.getNextMatch()),
+                            .doRequest(SportAPI.getNextMatch(league)),
                         MatchResponse::class.java
                     )
                 }

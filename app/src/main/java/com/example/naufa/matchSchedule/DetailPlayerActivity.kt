@@ -1,6 +1,5 @@
 package com.example.naufa.matchSchedule
 
-import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -22,7 +21,7 @@ class DetailPlayerActivity : AppCompatActivity(), PlayerDetailView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_player)
         supportActionBar?.title = getString(R.string.title_player_activity)
-
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         idPlayer = intent.getStringExtra("idPlayer")
         val request = ApiRepository()
@@ -42,7 +41,7 @@ class DetailPlayerActivity : AppCompatActivity(), PlayerDetailView {
 
     override fun showPlayerDetail(data: List<PlayerDetail>) {
 
-        Glide.with(this).load(data[0].strFanart1).into(player_img_detail)
+        data[0].strFanart1?.let { Glide.with(this).load(it).into(player_img_detail) }
         player_role_detail.text = data[0].strPosition
         player_forward_detail.text = data[0].strDescriptionEN
         player_weight_detail.text = data[0].strWeight

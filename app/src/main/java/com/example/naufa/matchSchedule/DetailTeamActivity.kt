@@ -8,6 +8,7 @@ import android.support.v4.content.ContextCompat
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import com.bumptech.glide.Glide
 import com.example.naufa.matchSchedule.Adapter.FragmentDetailTeamAdapter
 import com.example.naufa.matchSchedule.Api.ApiRepository
 import com.example.naufa.matchSchedule.Api.Presenter.TeamPresenter
@@ -74,6 +75,10 @@ class DetailTeamActivity : AppCompatActivity(), TeamListView {
             data[0].teamName,
             data[0].strTeamBadge
         )
+        data[0].strTeamBadge.let{ Glide.with(this).load(it).into(team_image_detail)}
+        team_name_detail.text = data[0].teamName
+        team_formed_detail.text = data[0].teamFormedYear
+        team_stadium_detail.text = data[0].teamStadium
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

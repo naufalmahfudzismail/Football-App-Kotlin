@@ -31,9 +31,9 @@ class PlayerRecyclerAdapter(private val context : Context, private val players :
 
         fun bindMatch(player : Player, listener : (Player) -> Unit, context: Context){
 
-            Glide.with(context).load(player.strCutout).into(containerView.img_player)
             containerView.name_player.text = player.strPlayer
             containerView.role_player.text = player.strPosition
+            player.strCutout?.let { Glide.with(context).load(it).into(containerView.img_player) }
             containerView.setOnClickListener { listener(player) }
 
         }

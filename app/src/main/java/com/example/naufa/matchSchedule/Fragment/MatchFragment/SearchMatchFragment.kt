@@ -32,6 +32,7 @@ class SearchMatchFragment : Fragment(), MatchView ,SwipeRefreshLayout.OnRefreshL
         super.onActivityCreated(savedInstanceState)
 
         swipe_search_match.setOnRefreshListener(this)
+        search_match.setOnSearchActionListener(this)
 
         adapter = MatchRecyclerAdapter(this.context!!, matches) {
             startActivity(
@@ -60,7 +61,7 @@ class SearchMatchFragment : Fragment(), MatchView ,SwipeRefreshLayout.OnRefreshL
     override fun onRefresh() {
         if (swipe_search_match.isRefreshing)
             swipe_search_match.isRefreshing = false
-        startRefresh()
+        startRefresh(title)
     }
 
     override fun isLoading() {
@@ -82,24 +83,24 @@ class SearchMatchFragment : Fragment(), MatchView ,SwipeRefreshLayout.OnRefreshL
 
     override fun onSearchConfirmed(text: CharSequence?) {
         title = text.toString()
-        startRefresh()
+        startRefresh(title)
     }
 
-    private fun startRefresh(){
+    private fun startRefresh(key: String){
 
         if (swipe_search_match.isRefreshing) return
         swipe_search_match.isRefreshing = true
-        searchPresenter.getMatch(title)
+        searchPresenter.getMatch(key)
     }
 
 
 
     override fun onButtonClicked(buttonCode: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 
     override fun onSearchStateChanged(enabled: Boolean) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 
 

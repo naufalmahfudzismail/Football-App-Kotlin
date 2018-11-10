@@ -32,7 +32,7 @@ class FavoriteTeamFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
         adapter = FavoriteTeamsRecyclerAdapter(this.context!!, favoriteTeam) {
             startActivity(
-                intentFor<DetailTeamActivity>("idTeam" to it.id)
+                intentFor<DetailTeamActivity>("teamId" to it.teamId)
             )
         }
 
