@@ -59,6 +59,7 @@
     <string name="spanish_la_liga">Spanish La Liga</string>
     <string name="search_match_hint">Search Match</string>
     <string name="search_team_hint">Search teams</string>
+    <string name="title_match">Match Detail</string>
 
     <array name="league">
         <item>English Premier League</item>

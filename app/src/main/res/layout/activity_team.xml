@@ -5,21 +5,30 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.example.naufa.matchSchedule.TeamActivity">
+        tools:context="com.example.naufal.football.TeamActivity">
     <com.mancj.materialsearchbar.MaterialSearchBar
             app:mt_placeholder="@string/search_team_hint"
             app:mt_hint="@string/search_team_hint"
-            app:mt_searchBarColor="@color/biruPastel"
+            app:mt_searchBarColor="@color/searchBarHintColor"
             android:padding="10dp"
             android:id="@+id/search_team"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
     </com.mancj.materialsearchbar.MaterialSearchBar>
 
-    <android.support.v4.widget.SwipeRefreshLayout
-            android:layout_margin="10dp"
-            android:layout_above="@+id/bottom_layout"
+    <Spinner
+            android:id="@+id/spinner_team"
             android:layout_below="@+id/search_team"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+    </Spinner>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_above="@+id/bottom_layout"
+            android:layout_below="@+id/spinner_team"
             android:id="@+id/swipe_search_team"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
@@ -49,7 +58,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:itemBackground="@android:color/white"
-                app:menu="@menu/bottom_navigation_menu" />
+                app:menu="@menu/bottom_navigation_menu"/>
     </LinearLayout>
 
 

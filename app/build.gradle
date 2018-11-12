@@ -10,7 +10,7 @@ apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.example.naufa.matchSchedule"
+        applicationId "com.example.naufal.football"
         minSdkVersion 17
         targetSdkVersion 28
         versionCode 1

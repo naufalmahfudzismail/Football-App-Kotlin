@@ -14,7 +14,7 @@
     <com.mancj.materialsearchbar.MaterialSearchBar
             app:mt_placeholder="@string/search_match_hint"
             app:mt_hint="@string/search_match_hint"
-            app:mt_searchBarColor="@color/biruPastel"
+            app:mt_searchBarColor="@color/searchBarHintColor"
             android:padding="10dp"
             android:id="@+id/search_match"
             android:layout_width="wrap_content"

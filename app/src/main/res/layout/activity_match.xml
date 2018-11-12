@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context="com.example.naufa.matchSchedule.MatchActivity">
+        tools:context="com.example.naufal.football.MatchActivity">
 
     <android.support.design.widget.AppBarLayout
             android:id="@+id/app_bar"
